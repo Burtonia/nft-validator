@@ -1,0 +1,73 @@
+body {background:#fff;}
+
+#form, #intro-card {height:300px; width:100%; display:block;}
+#intro-card {padding:1rem; background:#ced4da;}
+
+.wrapper {display:block; max-width:1200px; margin:2rem auto;}
+
+.nftv-field, input[type="text"], select, textarea, .network-option, .close-network-options {
+  cursor:pointer; transition:all 0.2s linear;
+}
+.close-network-options {
+  display: block;
+  width: 30px;
+  float: right;
+}
+.nftv-field:hover, input[type="text"]:hover, select:hover, textarea:hover {
+  background: #010101;
+  color: #ffffff;
+}
+
+.network-option:hover {
+  background: #ced4da;
+}
+
+.nftv-row {
+  padding:1rem 1rem 2rem 1rem;
+  display:block;
+  border-bottom:solid 1px #ced4da;
+  margin:2rem auto;
+}
+
+.nftv-field {
+  border: 1px solid #ced4da;
+  border-radius:1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.result-card {
+  padding:1rem;
+  border:solid 1px #ced4da;
+  border-radius:1rem;
+  margin-bottom:1rem;
+  min-height:150px;
+  transition:all 0.2s linear;
+}
+
+.result-card:hover {
+  box-shadow: 0 0 24px #d9d9d9;
+}
+
+#json-data {width:100%; min-height:240px;}
+
+.br-1 {border-radius:1rem;}
+
+.network-icon {width:40px;}
+.network-icon, .network-name {display:inline-block;}
+.network-option {padding:8px; border-bottom:solid 1px #ced4da;}
+.network-option * {pointer-events:none !important;}
+.hidden {display:none !important;}
+
+#network-dropdown {position:relative;}
+#network-options {
+    border: solid 1px #ced4da;
+    border-radius: 1rem;
+    height: 220px;
+    overflow-y: scroll;
+    padding: 1rem;
+    position: absolute;
+    display: block;
+    width: 100%;
+    background: #fff;
+}

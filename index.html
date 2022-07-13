@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TBD NFT Validator</title>
+  <link rel="stylesheet" href="./css/bootstrap5.min.css?v=029" />
+  <link rel="stylesheet" href="./css/index.css?v=029" />
+</head>
+
+<body>
+
+<div id="nft-validator">
+  <div class="wrapper">
+
+    <div id="validator-form">
+
+      <!-- The NFT Validator Form -->
+      <div id="form-wrap" class="nftv-row">
+        <div class="row">
+
+          <div class="col-12 col-md-6 col-lg-7 col-xl-8">
+            <div id="intro-card" class="text-center br-1 mb-2">
+              <h1>TBD NFT Validator</h1>
+              <p class="h4"><em>Rapid Prototype</em></p>
+              <p>for ERC-721, ERC-1155 and OpenSea metadata format</p>
+              <p>Coding by <a href="https://alexburton.com" target="_blank">Alex Burton</a></p>
+              <p>Soon-to-be built &amp; finished with friends!</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+            <div id="form">
+
+              <div class="form-group">
+                <label for="network">Network</label>
+                <!-- <select id="network" class="form-control br-1 mb-3">
+                  <option value="">Please Choose a Network</option>
+                </select> -->
+                <div id="network-dropdown">
+                  <div id="chosen-network" class="nftv-field">Please choose a Network</div>
+                  <input id="network" type="hidden" value="" />
+                  <div id="network-options" class="hidden">
+                    <span class="close-network-options text-right badge bg-danger">X</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contract-address">Contract Address</label>
+                <input id="contract-address" type="text" class="form-control br-1 mb-3" placeholder="0x4f542ee31cb44d04c3cf88ccd6573d9af29c3393" />
+              </div>
+
+              <div class="form-group">
+                <label for="token-id">Token ID</label>
+                <input id="token-id" type="text" class="form-control br-1 mb-3" placeholder="12345678" />
+              </div>
+
+              <div class="form-group">
+                <button id="validate-nft" class="btn btn-md my-2 text-center br-1 btn-success">Validate It</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div id="request-json">
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div id="validator-results">
+
+      <!-- Contract Test Results -->
+      <div id="contract-tests" class="nftv-row">
+
+        <div class="row">
+          <div class="col-12">
+            <h2>Contract</h2>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-contract" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is the address a contract?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-erc-165-ready" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is the contract ERC-165 ready?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-erc-721-ready" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is the contract ERC-721 ready?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-erc-1155-ready" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is the contract ERC-1155 ready?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ERC 721 Test Results -->
+      <div id="erc-721-tests" class="nftv-row">
+
+        <div class="row">
+          <div class="col-12">
+            <h2>ERC-721 Tests</h2>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-erc-721-metadata-ready" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is it ERC-721 Metadata ready?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-erc-721-enumerable-ready" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is it ERC-721 Enumberable ready?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--has-name" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Does it have a name?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--has-symbol" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Does it have a symbol?</h3>
+                <p></p>
+              </div>
+              <div id="" class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--has-total-supply" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Does it have a total supply?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-token-by-index-supported" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is tokenByIndex() supported?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-token-of-owner-by-index-supported" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is tokenOfOwnerByIndex() supported?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--has-valid-erc-721-uri" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Does it have a valid URI?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ERC 1155 Test Results -->
+      <div id="erc-1155-tests" class="nftv-row">
+        <div class="row">
+          <div class="col-12">
+            <h2>ERC-1155 Tests</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--has-valid-erc-1155-uri" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Does it have a valid URI?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meta Data Test Results -->
+      <div id="meta-data-tests" class="nftv-row">
+
+        <div class="row">
+          <div class="col-12">
+            <h2>Metadata Tests</h2>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-metadata-url-readable" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is the metadata URL readable?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div id="result--is-metadata-valid" class="result-card">
+              <div class="result-badge">
+                <span class="badge bg-secondary">Status</span>
+              </div>
+              <div class="test-info">
+                <h3>Is the metadata valid?</h3>
+                <p></p>
+              </div>
+              <div class="result-message"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- JSON Data Results -->
+      <div id="json-results">
+        <div class="row">
+          <div class="col-12">
+            <h2>JSON Results</h2>
+            <textarea id="json-data"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- End: #validator-results -->
+
+  </div>
+</div>
+
+<!-- Begin Importing Scripts -->
+<script src="./js/index.js?v=029"></script>
+
+</body>
+
+</html>
